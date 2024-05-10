@@ -48,6 +48,13 @@ jobs:
           working_directory: "${{ matrix.dirs }}"
           post_complie: "latexmk -c"
 
+      - id: debug
+        if: always()
+        run: |
+          df -h
+          USAGE=$(df -h)
+          echo "${USAGE}" >> GITHUB_OUTPUT
+
       - name: Upload artifact (temp)
         uses: actions/upload-artifact@v4
         with:

@@ -20,13 +20,14 @@ jobs:
 
       - id: files
         run: |
-          DIRS=$(echo "${{ steps.diffs.outputs.added_modified }}" | xargs -n1 | grep -E ".*\.tex$" | jq -Rsc 'split("\n") | map(select(. != ""))')
+          DIRS=$(echo "${{ steps.diffs.outputs.added_modified }}" | xargs -n1 | grep -E ".*\.tex$" | xargs dirname | uniq | jq -Rsc 'split("\n") | map(select(. != ""))')
           echo "dirs=${DIRS}"
           echo "dirs=${DIRS}" >> $GITHUB_OUTPUT
 
   compile-upload:
     runs-on: self-hosted
       #if: github.event.pull_request.merged == true
+    if: ${{ needs.get-changes.outputs.dirs != [] }}
     needs: find-changes
     strategy:
       matrix:

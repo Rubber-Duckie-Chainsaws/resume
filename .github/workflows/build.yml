@@ -18,7 +18,7 @@ jobs:
       - id: diffs
         uses: masesgroup/retrieve-changed-files@v2
 
-      - id: files
+      - id: dirs
         run: |
           DIRS=$(echo "${{ steps.diffs.outputs.added_modified }}" | xargs -n1 | grep -E ".*\.tex$" | xargs dirname | uniq | jq -Rsc 'split("\n") | map(select(. != ""))')
           echo "dirs=${DIRS}"
@@ -35,6 +35,4 @@ jobs:
     steps:
       - id: check
         run: echo "${{ matrix.dirs }}"
-
-
 

@@ -21,7 +21,7 @@ jobs:
       - id: files
         run: |
           DIRS=$(echo "${{ steps.diffs.outputs.added_modified }}" | xargs -n1 | grep -E ".*\.tex$" | jq -Rsc 'split("\n") | map(select(. != ""))')
-          echo "dirs=${DRIS}" >> $GITHUB_OUTPUT
+          echo "dirs=${DIRS}" >> $GITHUB_OUTPUT
 
   compile-upload:
     runs-on: self-hosted

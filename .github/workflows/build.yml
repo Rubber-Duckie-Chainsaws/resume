@@ -27,7 +27,7 @@ jobs:
   compile-upload:
     runs-on: self-hosted
       #if: github.event.pull_request.merged == true
-    if: ${{ needs.find-changes.outputs.dirs != '[]' }} && ${{ needs.find-changes.outputs.dirs != '' }}
+    if: ${{ needs.find-changes.outputs.dirs != '[]' && needs.find-changes.outputs.dirs != '' }}
     needs: find-changes
     strategy:
       matrix:

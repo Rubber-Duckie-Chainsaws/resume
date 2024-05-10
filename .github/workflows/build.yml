@@ -1,0 +1,38 @@
+name: Build Resume
+on: push
+  #on: pull-request
+  #  branches:
+  #    - main
+  #  types:
+  #    - closed
+jobs:
+  find-changes:
+    runs-on: self-hosted
+    if: github.event.pull_request.merged == true
+    name: Find changed latex folders
+    outputs:
+      dirs: ${{ steps.dirs.outputs.dirs }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: diffs
+        uses: masesgroup/retrieve-changed-files@v2
+
+      - id: files
+        run: |
+          DIRS=$(echo "${{ steps.diffs.outputs.added_modified }}" | xargs -n1 | grep -E ".*\.tex$" | jq -Rsc 'split("\n") | map(select(. != ""))')
+          echo "dirs=${DRIS}" >> $GITHUB_OUTPUT
+
+  compile-upload:
+    runs-on: self-hosted
+    if: github.event.pull_request.merged == true
+    needs: find-changes
+    strategy:
+      matrix:
+        dirs: ${{ fromJSON(needs.get-changes.outputs.dirs) }}
+    steps:
+      - id: check
+        run: echo "${{ matrix.dirs }}"
+
+
+

@@ -35,6 +35,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - id: debug
+        run: |
+          df -h
+          USAGE=$(df -h)
+          echo "${USAGE}" >> GITHUB_OUTPUT
+
       - name: Compile PDF
         uses: xu-cheng/latex-action@v3
         with:

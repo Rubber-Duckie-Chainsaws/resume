@@ -8,7 +8,7 @@ on: push
 jobs:
   find-changes:
     runs-on: self-hosted
-    if: github.event.pull_request.merged == true
+      #if: github.event.pull_request.merged == true
     name: Find changed latex folders
     outputs:
       dirs: ${{ steps.dirs.outputs.dirs }}
@@ -25,7 +25,7 @@ jobs:
 
   compile-upload:
     runs-on: self-hosted
-    if: github.event.pull_request.merged == true
+      #if: github.event.pull_request.merged == true
     needs: find-changes
     strategy:
       matrix:

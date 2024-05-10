@@ -27,11 +27,11 @@ jobs:
   compile-upload:
     runs-on: self-hosted
       #if: github.event.pull_request.merged == true
-    if: ${{ needs.get-changes.outputs.dirs != '[]' }} && ${{ needs.get-changes.outputs.dirs != '' }}
+    if: ${{ needs.find-changes.outputs.dirs != '[]' }} && ${{ needs.find-changes.outputs.dirs != '' }}
     needs: find-changes
     strategy:
       matrix:
-        dirs: ${{ fromJSON(needs.get-changes.outputs.dirs) }}
+        dirs: ${{ fromJSON(needs.find-changes.outputs.dirs) }}
     steps:
       - id: check
         run: echo "${{ matrix.dirs }}"

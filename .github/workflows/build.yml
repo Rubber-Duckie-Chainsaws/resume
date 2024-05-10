@@ -33,6 +33,18 @@ jobs:
       matrix:
         dirs: ${{ fromJSON(needs.find-changes.outputs.dirs) }}
     steps:
-      - id: check
-        run: echo "${{ matrix.dirs }}"
+      - uses: actions/checkout@v3
+
+      - name: Compile PDF
+        uses: xu-cheng/latex-actions@v3
+        with:
+          root_file: resume.tex
+          working_directory: "${{ matrix.dirs }}"
+          post_complie: "latexmk -c"
+
+      - name: Upload artifact (temp)
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ matrix.dirs }}.pdf"
+          path: "${{ matrix.dirs }}/resume.pdf"
 

@@ -46,7 +46,7 @@ jobs:
         with:
           root_file: resume.tex
           working_directory: "${{ matrix.dirs }}"
-          post_complie: "latexmk -c"
+          post_compile: "latexmk -c"
 
       - id: more-debug
         if: always()

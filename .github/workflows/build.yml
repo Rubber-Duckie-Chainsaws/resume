@@ -35,12 +35,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - id: debug
-        run: |
-          df -h
-          USAGE=$(df -h)
-          echo "${USAGE}" >> GITHUB_OUTPUT
-
       - name: Compile PDF
         uses: xu-cheng/latex-action@v3
         with:
@@ -48,16 +42,7 @@ jobs:
           working_directory: "${{ matrix.dirs }}"
           post_compile: "latexmk -c"
 
-      - id: more-debug
-        if: always()
-        run: |
-          df -h
-          USAGE=$(df -h)
-          echo "${USAGE}" >> GITHUB_OUTPUT
-
-      - name: Upload artifact (temp)
-        uses: actions/upload-artifact@v4
-        with:
-          name: "${{ matrix.dirs }}.pdf"
-          path: "${{ matrix.dirs }}/resume.pdf"
-
+      - name: Upload artifact to s3
+        id: s3-upload
+        run:
+          aws s3 cp "${{ matrix.dirs }}/resume.pdf" "s3://${{ secrets.S3_BUCKET }}/${{ matrix.dirs }}/resume.pdf"

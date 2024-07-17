@@ -1,10 +1,9 @@
 name: Build Resume
-on: push
-  #on: pull-request
-  #  branches:
-  #    - main
-  #  types:
-  #    - closed
+on: pull-request
+  branches:
+    - main
+  types:
+    - closed
 jobs:
   find-changes:
     runs-on: self-hosted

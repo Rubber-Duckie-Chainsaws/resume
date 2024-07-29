@@ -1,0 +1,47 @@
+name: Build Resume
+on: pull-request
+  branches:
+    - main
+  types:
+    - closed
+jobs:
+  find-changes:
+    runs-on: self-hosted
+      #if: github.event.pull_request.merged == true
+    name: Find changed latex folders
+    outputs:
+      dirs: ${{ steps.dirs.outputs.dirs }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: diffs
+        uses: masesgroup/retrieve-changed-files@v2
+
+      - id: dirs
+        run: |
+          DIRS=$(echo "${{ steps.diffs.outputs.added_modified }}" | xargs -n1 | grep -E ".*\.tex$" | xargs dirname | uniq | jq -Rsc 'split("\n") | map(select(. != ""))')
+          echo "dirs=${DIRS}"
+          echo "dirs=${DIRS}" >> $GITHUB_OUTPUT
+
+  compile-upload:
+    runs-on: self-hosted
+      #if: github.event.pull_request.merged == true
+    if: ${{ needs.find-changes.outputs.dirs != '[]' && needs.find-changes.outputs.dirs != '' }}
+    needs: find-changes
+    strategy:
+      matrix:
+        dirs: ${{ fromJSON(needs.find-changes.outputs.dirs) }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          working_directory: "${{ matrix.dirs }}"
+          post_compile: "latexmk -c"
+
+      - name: Upload artifact to s3
+        id: s3-upload
+        run:
+          aws s3 cp "${{ matrix.dirs }}/resume.pdf" "s3://${{ secrets.S3_BUCKET }}/${{ matrix.dirs }}/resume.pdf"

@@ -3,34 +3,79 @@
 
 \large{\textbf{Peloton}} \\
 \textit{Site Reliability Engineer} \hfill Feb 2018 - May 2024 \\[3.75pt]
-Designed, built and operated a centralized company-wide IaC Platform. Managed self-hosted, automated deployment and rollback CI/CD system. Leveraged GitOps workflows to ensure correctness and idempotency of changes and rectify IAC drift on routine schedules. Developed novel dependency management system based on terragrunt, allowing cross team and cross account access, providing at a glance information on both module usage and service dependencies, and enabling a full DR story in staged applies from account creation to service deployment. Provided full stack tooling allowing for consistent access for local operations and safeguards on manual fixes (state imports). Provided docs and training to assist teams in getting up to speed on terraform and our IaC platform.
-
+\textit{IaC Subject Matter expert, building out a fully featured, internal IaC platform}
 
 \begin{minipage}[t]{\linewidth}
-    \begin{itemize}
-        \item[--] $\sim$3000 individually deployed services
-        \item[--] 10 core AWS accounts, 30 sandbox accounts
-        \item[--] AWS, cloudflare, and datadog modules controlled
-        \item[--] Self service of both module and deployment
-    \end{itemize}
-    \end{minipage}
+  \begin{itemize}
+    \item Built internal Terraform/Terragrunt-powered IaC platform for entire company infrastructure. Servicing $\sim$3000 individually managed services. Allowing self-service module and service releases.
+              \begin{itemize}
+                  \item[--] 10 core AWS accounts, 30 sandbox accounts
+                  \item[--] AWS, cloudflare, and datadog modules controlled
+                  \item[--] GitOps Release for plan, apply and rollback
+                  \item[--] Fully containerized environment
+                  \item[--] Automated, datadog alerting and paging
+              \end{itemize}
+    \item Wrote Golang cli tools to ease and simplify terraform manual intervention steps. Providing state backup, breakglass role escalation, and command shortcuts for operators
+    \item Wrote Vue web frontends to help visualize complexity of platform in human digestible form
+    \item Supported devs and operators with training, consultation to onboard and raise copetency with terraform and our platform in particular. Provided 24/7 oncall support for platform, and managed company-wide drift detection
+    \item Designed automated terragrunt dependency manager. Assisting users in deploying the correct code every time, handling rollbacks, and tracking inter-team dependencies.
+      \begin{itemize}
+        \item[--] Allowed full DR story for recovering cloud infra
+        \item[--] Guarded against teams unintentionally impacting either other
+        \item[--] Tracked both module and service dependencies
+      \end{itemize}
+    \item Managed chef cookbooks for legacy EC2 fleet. Managed intergration and unit tests. Handled spin up and down of nodes
+    \item Administered Jenkins cluster. Provided isolated jenkins instance for individual teams, and provided guidance on on-boarding new projects and tests into Jenkins cluster
+  \end{itemize}
+\end{minipage}
+
 
 \large{\textbf{LiquidSky}} \\
-\textit{Network Operations Engineer} \hfill June 2017 - Jan 2018 \\[3.75pt]
-Took ownership of AWS platform, responsible for high level design considerations with regards to use of the platform. Built automation tools for hosting and monitoring microservice infrastructure. Using Terraform, managed machines and built self-regulating, relaible systems with ansible and packer for gold and silver images. Researched and proposed infrastructure-wide design docs promoting scalability and extensibility.
+\textit{Site Reliability Engineer} \hfill June 2017 - Jan 2018 \\[3.75pt]
+\textit{SRE tasked with unifying and simplifying the sprawl of hand configured machines. Wrangling growth in sustainable platform}
+
+\begin{minipage}[t]{\linewidth}
+  \begin{itemize}
+    \item Built and operated docker service mesh, backed by consul for internal tooling
+    \item Built ansible and packer tooling to managed image creation for AWS and IBM, providing consistent platform in hybrid cloud
+    \item Managed and maintained ZFS storage backend vendor relationship
+    \item Imported existing infrastructure into Terraform. Handled transition from EBS to internal docker platform
+  \end{itemize}
+\end{minipage}
 
 \large{\textbf{Service Fusion}} \\
 \textit{Full Stack Developer} \hfill August 2016 - December 2016 \\[3.75pt]
-Built new functionality for client-facing application. Designed and implemented features across the entire tech stack, from design requirements through backend capability to frontend functionality. Built out company first unit testing framework and build system.
+\textit{Full stack developer in change of migrating SPA to new tech}
 
 \begin{minipage}[t]{\linewidth}
-    \begin{itemize}
-        \item[--] Vue.js based SPA
-        \item[--] Oversaw migration from web2py to falcon webserver
-        \item[--] Built out first build system for stable and reliable releases including test capabilities
-    \end{itemize}
-    \end{minipage}
+  \begin{itemize}
+    \item Designed new website features for vue.ja based SPA, taking them fully from user stories from ticket to released feature.
+      \begin{itemize}
+        \item[--] Internal email client
+        \item[--] Websocket-powered authentical chat client for client to customer communication
+      \end{itemize}
+    \item Managed migration from web2py to falcon.
+      \begin{itemize}
+        \item Evangalized and implemented first unit and integration tests company-wide
+        \item Rewrote ORM integration
+      \end{itemize}
+    \item Built ansible-powered Debian build system for building and testing production artifacts
+    \item Built ansible playbooks for managing and deploying repeatable production servers
+  \end{itemize}
+\end{minipage}
 
 \large{\textbf{Dyn}} \\
 \textit{Associate Sustaining Engineer} \hfill July 2014 - February 2016 \\[3.75pt]
-Triaged recurring customer-related issues that escalated above support capabilities. Fixed bugs and implemented QoL features on various projects. Maintained internal Django-powered tooling platform, backfilling support with new resolution techniques for customers.
+\textit{Browncoat front-line engineer, providing tooling directly to support staff}
+
+\begin{minipage}[t]{\linewidth}
+  \begin{itemize}
+    \item Triaged recurring customer-related issues that escalated above support capabilities.
+    \item Fixed bugs and implemented QoL and mainted various projects legacy projects. Extending their lifecycle, freeing the devs to work on their replacement systems.
+    \item Maintained internal Django-powered tooling platform, used by customer support to directly service customer calls and concerns
+      \begin{itemize}
+        \item Added new functionality in response to changing user needs
+        \item Built instrumentation for visualizing system help in collaboration with NOC
+      \end{itemize}
+  \end{itemize}
+\end{minipage}

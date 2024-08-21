@@ -26,7 +26,7 @@
 %----------------------------------------------------------------------------------------
 
 % article class because we want to fully customize the page and not use a cv template
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,10pt]{article}
 
 %----------------------------------------------------------------------------------------
 %	FONT
@@ -88,6 +88,8 @@
 %for social icons
 \usepackage{fontawesome5}
 
+\usepackage[table]{xcolor}
+
 %debug page outer frames
 %\usepackage{showframe}
 
@@ -111,12 +113,6 @@
 %	TITLE
 %----------------------------------------------------------------------------------------
 
-% \begin{tabularx}{\linewidth}{ @{}X X@{} }
-% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
-% \raisebox{-0.05\height}\faGithub\ username \ | \
-% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
-% \end{tabularx}
-
 \begin{tabularx}{\linewidth}{@{} C @{}}
 \Huge{Tipene Moss} \\[7.5pt]
 \href{https://github.com/wigglesmcmuffin}{\raisebox{-0.05\height}\faGithub\ WigglesMcMuffin} \ $|$ \
@@ -131,22 +127,27 @@
 
 %Interests/ Keywords/ Summary
 \section{Summary}
-Developer Focused SRE, specializing in IaC and other platform based technologies.
-
-\input{jobs}
-%\input{projects}
+Site Reliability Engineer, specializing in IaC, focused on building developer first tooling and integrated platforms. Terraform/Terragrunt subject matter expert.
 
 %----------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
 \section{Skills}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-Proficiency &  \normalsize{Python, Terraform, Terragrunt, GHA, AWS, Bash/Unix}\\
-Familiarity  &  \normalsize{Go, Javascript, Vue.js, Nomad, Packer, Ansible}\\
-Acquaintance  & \normalsize{K8s}\\
-%Things I'm definitely avoiding & \normalsize{chef, jenkins, hard work, on call, struggle}\\
-%Things I'm not avoiding & \normalsize{Dollah bills yo}\\
+\rowcolors{2}{gray!25}{gray!10}
+\begin{tabularx}{\linewidth}{ l X l X }
+  AWS & \normalsize{EC2, IAM, RDS, S3, Route53} &
+  Programming & \normalsize{Python, Go, Javascript, Node} \\
+  Orchestration & \normalsize{Docker, Nomad, Kubernetes} &
+  CI/CD & \normalsize{Jenkins, CircleCi, Github Actions} \\
+  Web & \normalsize{Vue.js, D3.js, HTML, CSS, SASS} &
+  Linux & \normalsize{Bash, Arch, Ubuntu/Debian, cloud-init} \\
+  Observability & \normalsize{Datadog, Vector, Prometheus, Loki, Grafana} &
+  Config Management & \normalsize{Terraform, Terragrunt, Atlantis, Scalr, Ansible, Chef, Packer} \\
+  IC & \multicolumn{3}{c}{\normalsize{Project Management, Epic and quarterly roadmap planning, Self-directed}} \\
 \end{tabularx}
+
+\input{jobs}
+%\input{projects}
 
 \vfill
 \center{\footnotesize Last updated: \today}\\

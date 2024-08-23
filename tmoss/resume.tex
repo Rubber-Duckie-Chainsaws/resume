@@ -26,7 +26,7 @@
 %----------------------------------------------------------------------------------------
 
 % article class because we want to fully customize the page and not use a cv template
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,10pt]{article}
 
 %----------------------------------------------------------------------------------------
 %	FONT
@@ -88,6 +88,8 @@
 %for social icons
 \usepackage{fontawesome5}
 
+\usepackage[table]{xcolor}
+
 %debug page outer frames
 %\usepackage{showframe}
 
@@ -111,12 +113,6 @@
 %	TITLE
 %----------------------------------------------------------------------------------------
 
-% \begin{tabularx}{\linewidth}{ @{}X X@{} }
-% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
-% \raisebox{-0.05\height}\faGithub\ username \ | \
-% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
-% \end{tabularx}
-
 \begin{tabularx}{\linewidth}{@{} C @{}}
 \Huge{Tipene Moss} \\[7.5pt]
 \href{https://github.com/wigglesmcmuffin}{\raisebox{-0.05\height}\faGithub\ WigglesMcMuffin} \ $|$ \
@@ -131,22 +127,11 @@
 
 %Interests/ Keywords/ Summary
 \section{Summary}
-Developer Focused SRE, specializing in IaC and other platform based technologies.
+Experienced Site Reliability Engineer specializing in IaC, cloud engineering, and DevEx. In-depth Terraform/Terragrunt subject matter expert.
 
+\input{skills}
 \input{jobs}
 %\input{projects}
-
-%----------------------------------------------------------------------------------------
-%	SKILLS
-%----------------------------------------------------------------------------------------
-\section{Skills}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-Proficiency &  \normalsize{Python, Terraform, Terragrunt, GHA, AWS, Bash/Unix}\\
-Familiarity  &  \normalsize{Go, Javascript, Vue.js, Nomad, Packer, Ansible}\\
-Acquaintance  & \normalsize{K8s}\\
-%Things I'm definitely avoiding & \normalsize{chef, jenkins, hard work, on call, struggle}\\
-%Things I'm not avoiding & \normalsize{Dollah bills yo}\\
-\end{tabularx}
 
 \vfill
 \center{\footnotesize Last updated: \today}\\
